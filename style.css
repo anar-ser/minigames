@@ -1,0 +1,28 @@
+body {
+	background-color: #161b22;
+	margin-left: auto;
+	margin-right: auto;
+}
+div {
+	margin: 0px auto;
+    width: 400px;
+	height: fit_content;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 6px;
+	border-color: #3d444d;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+}
+a{
+	border-top: solid 1px #3d444d;
+	height: 100px;
+}
+p {
+	color: #F0F6FC;
+}
+.icon {
+	width: 50px;
+	height: 50px;
+}
