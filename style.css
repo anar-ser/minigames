@@ -10,6 +10,7 @@ a {
 	display: flex;
 	flex-direction: row;
 	align-items: stretch;
+	justify-contnt: flex-start;
 }
 p {
 	color: #F0F6FC;
