@@ -11,6 +11,7 @@ a {
 	flex-direction: row;
 	align-items: stretch;
 	justify-contnt: flex-start;
+	text-decoration:none;
 }
 p {
 	color: #F0F6FC;
