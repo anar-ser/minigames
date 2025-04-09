@@ -49,7 +49,7 @@ function init() {
     scene.add(ground);
     
     // Create player
-    const playerGeometry = new THREE.BoxGeometry(0.5, 1, 0.5);
+    const playerGeometry = new THREE.CylinderGeometry(0.25, 0.25, 1, 32);
     const playerMaterial = new THREE.MeshStandardMaterial({ color: 0xff0000 });
     player = new THREE.Mesh(playerGeometry, playerMaterial);
     player.position.y = 0.5;
@@ -106,7 +106,7 @@ function createCoins(count) {
 function createObstacles(count) {
     for (let i = 0; i < count; i++) {
         const size = 0.5 + Math.random() * 1.5;
-        const obstacleGeometry = new THREE.BoxGeometry(size, size, size);
+        const obstacleGeometry = new THREE.CylinderGeometry(size/2, size/2, size, 32);
         const obstacleMaterial = new THREE.MeshStandardMaterial({ 
             color: 0x8B4513,
             roughness: 0.8
@@ -220,12 +220,13 @@ function animate() {
     // Check obstacle collisions
     for (let obstacle of obstacles) {
         const distance = player.position.distanceTo(obstacle.position);
-        if (distance < 1) {
+		const size = obstacle.position.y + 0.25
+        if (distance < size) {
             // Bounce back
-            if (moveForward) player.position.z += playerSpeed * 2;
-            if (moveBackward) player.position.z -= playerSpeed * 2;
-            if (moveLeft) player.position.x += playerSpeed * 2;
-            if (moveRight) player.position.x -= playerSpeed * 2;
+            if (moveForward) player.position.z += playerSpeed * 20 * (size - distance);
+            if (moveBackward) player.position.z -= playerSpeed * 20 * (size - distance);
+            if (moveLeft) player.position.x += playerSpeed * 20 * (size - distance);
+            if (moveRight) player.position.x -= playerSpeed * 20 * (size - distance);
         }
     }
     
