@@ -4,10 +4,11 @@ html {
 	font-size: 14px;
 	overflow: hidden;
 	background-color: #895339;
-	-webkit-user-select: none; /* Chrome/Safari */
-  	-moz-user-select: none; /* Firefox */
-  	-ms-user-select: none; /* IE/Edge */
-  	user-select: none; /* Стандартный синтаксис */
+	-webkit-user-select: none;
+  	-moz-user-select: none;
+  	-ms-user-select: none;
+  	user-select: none;
+    	pointer-events: none;
 }
 
 body {
