@@ -1,0 +1,47 @@
+html {
+	width: 100vw;
+	height: 100vh;
+	font-size: 14px;
+	overflow: hidden;
+	background-color: #895339;
+}
+
+body {
+	line-height: 0;
+	padding: 0;
+    margin: 0;
+	position: relative;
+	text-align: center;
+}
+
+footer {
+	position: relative;
+	width: 160rem;
+	height: 100px;
+	background-color: #895339;
+}
+
+img {
+	image-rendering: pixelated;
+}
+
+#game-ui {
+	position: absolute;
+}
+
+.game-container {
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+}
+
+#game-map {
+	width: 320rem;
+	height: 320rem;
+}
+
+#player {
+	width: 5rem;
+	height: 5rem;
+	position: absolute;
+}
