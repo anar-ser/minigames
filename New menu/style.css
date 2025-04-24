@@ -1,18 +1,10 @@
 html {
-	width: 100vw;
-	height: 100vh;
 	font-size: 14px;
 	overflow: hidden;
 	background-color: #895339;
-	-webkit-user-select: none;
-  	-moz-user-select: none;
-  	-ms-user-select: none;
-  	user-select: none;
-    	pointer-events: none;
 }
 
 body {
-	line-height: 0;
 	padding: 0;
     margin: 0;
 	position: relative;
@@ -20,9 +12,10 @@ body {
 }
 
 footer {
-	position: relative;
 	width: 160rem;
 	height: 100px;
+	z-index: -10;
+	position: relative;
 	background-color: #895339;
 }
 
@@ -30,23 +23,66 @@ img {
 	image-rendering: pixelated;
 }
 
-#game-ui {
-	position: absolute;
+.active {
+	display: block;
 }
 
-.game-container {
-	width: 100vw;
-	height: 100vh;
-	margin: 0;
+.hidden {
+	display: none;
+}
+
+.portal {
+	width: 10rem;
+	height: 10rem;
+	z-index: -1;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.info-container {
+	position: relative;
 }
 
 #game-map {
 	width: 320rem;
 	height: 320rem;
+	z-index: -9;
+	position:relative;
 }
 
 #player {
 	width: 5rem;
 	height: 5rem;
 	position: absolute;
+}
+
+#info-shadow {
+	width: 128rem;
+	height: 128rem;
+	border: 100vw solid #000000;
+	position: absolute;
+	background: radial-gradient(circle, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 10%, #000000 70%, #000000 100%);
+}
+
+#info-window {
+	width: 80vw;
+	height: 30vh;
+	position: absolute;
+	border: 0.5rem solid #404060;
+	border-radius: 2rem;
+	background-color: rgba(20, 20, 30, 0.8);
+}
+
+#info-title, #info-сontent, #redirect-button {
+	color: #AAAAAA
+}
+
+#redirect-button {
+	position: absolute;
+	bottom: 1rem;
+	right: 1rem;
+	padding: 1rem;
+	border: 0.2rem solid #AAAAAA;
+	border-radius: 1rem;
 }
