@@ -1,0 +1,107 @@
+@property --innerShadow {
+  syntax: '<color>';
+  initial-value: rgba(0, 0, 0, 0.5);
+  inherits: false;
+}
+
+@property --outerShadow {
+  syntax: '<color>';
+  initial-value: #000;
+  inherits: false;
+}
+
+html {
+	font-size: 14px;
+	overflow: hidden;
+	background-color: #895339;
+}
+
+body {
+	padding: 0;
+    margin: 0;
+	position: relative;
+	text-align: center;
+}
+
+footer {
+	width: 160rem;
+	height: 100px;
+	z-index: -10;
+	position: relative;
+	background-color: #895339;
+}
+
+img {
+	image-rendering: pixelated;
+}
+
+a {
+	text-decoration:none;
+}
+
+.active {
+	display: block;
+}
+
+.hidden {
+	display: none;
+}
+
+.portal {
+	width: 10rem;
+	height: 10rem;
+	z-index: -1;
+	position: absolute;
+}
+
+#game-map {
+	width: 320rem;
+	height: 320rem;
+	z-index: -9;
+	position:relative;
+}
+
+#player {
+	width: 5rem;
+	height: 5rem;
+	position: absolute;
+}
+
+#info-shadow {
+	width: 128rem;
+	height: 128rem;
+	border: solid var(--outerShadow);
+	border-width: 100vh 100vw;
+	position: absolute;
+	background: radial-gradient(circle, rgba(0, 0, 0, 0) 0%, var(--innerShadow) 10%, var(--outerShadow) 70%, var(--outerShadow) 100%);
+}
+
+#info-window {
+	width: 80vw;
+	height: 30vh;
+	position: absolute;
+	border: 0.5vh solid #404060;
+	border-radius: 2vh;
+	background-color: rgba(20, 20, 30, 0.8);
+}
+#info-window h3 {
+	font-size: 3vh;
+}
+
+#info-window p {
+	font-size: 2vh;
+}
+
+#info-title, #info-сontent, #redirect-button {
+	color: #AAAAAA
+}
+
+#redirect-button {
+	position: absolute;
+	bottom: 0.5vh;
+	right: 0.5vh;
+	padding: 0.8vh;
+	border: 0.3vh solid #AAAAAA;
+	border-radius: 1vh;
+	font-size: 2.1vh;
+}
