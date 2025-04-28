@@ -134,8 +134,8 @@ function cameraMove(x, y) {
 	infoShadow.style.top = y - (infoShadow.offsetHeight - player.element.offsetHeight)/2 + 'px';
 	
 	border = 4
-	x -= (window.innerWidth + player.element.offsetWidth)/2;
-	y -= (window.innerHeight + player.element.offsetHeight)/2;
+	x -= window.innerWidth/2 - player.element.offsetWidth;
+	y -= window.innerHeight/2 - player.element.offsetHeight;
 	speedX = (window.pageXOffset - x) / window.innerWidth * 32;
 	speedY = (window.pageYOffset - y) / window.innerHeight * 32;
 	if ( Math.abs(speedX) > border ) {
