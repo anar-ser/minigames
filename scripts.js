@@ -2,7 +2,7 @@
 var pressedKeys = {};
 window.onkeyup   = function(e) { pressedKeys[e.keyCode] = false; }
 window.onkeydown = function(e) { pressedKeys[e.keyCode] = true;  }
-window.onresize = setViewportProperty();
+window.onresize = setViewportProperty;
 
 const background = 	document.getElementById('game-map');
 let footer = 		document.getElementById('footer');
