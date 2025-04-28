@@ -2,6 +2,7 @@
 var pressedKeys = {};
 window.onkeyup   = function(e) { pressedKeys[e.keyCode] = false; }
 window.onkeydown = function(e) { pressedKeys[e.keyCode] = true;  }
+window.onresize = setViewportProperty();
 
 const background = 	document.getElementById('game-map');
 let footer = 		document.getElementById('footer');
@@ -72,7 +73,12 @@ let cameraOffset = { left: playerOffset.left - window.innerWidth/2 + player.elem
 					 top: playerOffset.top - window.innerHeight/2 + player.element.offsetHeight/2 };
 window.scroll(cameraOffset);
 
-
+function setViewportProperty() {
+  const vh = window.innerHeight * 0.01;
+  const vw = window.innerWidth * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+  document.documentElement.style.setProperty('--vw', `${vw}px`);
+}
 
 let state = false;
 function toggleState() {
@@ -160,7 +166,7 @@ function checkPortalCollision() {
 	showInfo(collision);
 };
 
-/* Main Game Loop */
+// Main Game Loop
 var gameLoop = function(interval) {
 	
 	if (pressedKeys[65]) {
@@ -186,14 +192,15 @@ var gameLoop = function(interval) {
 	cameraMove(playerOffset.left, playerOffset.top);
 }
 
-/* Set FPS */
+// Set FPS
 let FPS = 60;
 let interval = 1 / FPS;
 let frameCounter = 0;
 let oldTime = Date.now();
 let previousFrameTime = oldTime;
-
-/* Game States */
+// Initialization
+setViewportProperty();
+// Game States
 setInterval(function() {
     let now = Date.now();
     /*if (!gameStarted) {
