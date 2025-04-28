@@ -54,11 +54,59 @@ a {
 	position: absolute;
 }
 
-#game-map {
-	width: 320rem;
-	height: 320rem;
+svg.up, svg.down, svg.left, svg.right {
+	height: 50%;
+	width: 33.33%;
+	position: absolute;
+	transform-origin: top;
+}
+
+svg.up {
+	top: 50%;
+	left: 33.33%;
+	transform: rotate(180deg);
+}
+
+svg.down {
+	bottom: 0;
+	left: 33.33%;
+}
+
+svg.left {
+	top: 50%;
+	left: 33.33%;
+	transform: rotate(90deg);
+}
+
+svg.right {
+	top: 50%;
+	right: 33.33%;
+	transform: rotate(-90deg);
+}
+
+svg > a {
+	position: relative;
+}
+
+a > p {
+	font-size: 20vw;
+	position: absolute;
+	margin: 30% 30%;
+}
+
+#game-field {
+	position: relative;
+	margin: 0 auto;
+}
+
+#game-map {	
 	z-index: -9;
 	position:relative;
+}
+
+#game-field, #game-map {
+	width: 320rem;
+	height: 320rem;
 }
 
 #player {
@@ -79,7 +127,9 @@ a {
 #info-window {
 	width: calc(var(--vw, 1vw) * 80);
 	height: calc(var(--vh, 1vh) * 30);
-	position: absolute;
+	left: calc(var(--vw, 1vw) * 10);
+	top: calc(var(--vh, 1vh) * 10);
+	position: fixed;
 	border: calc(var(--vh, 1vh) * 0.5) solid #404060;
 	border-radius: calc(var(--vh, 1vh) * 2);
 	background-color: rgba(20, 20, 30, 0.8);
@@ -104,4 +154,13 @@ a {
 	border: calc(var(--vh, 1vh) * 0.3) solid #AAAAAA;
 	border-radius: var(--vh, 1vh);
 	font-size: calc(var(--vh, 1vh) * 2.1);
+}
+
+#movement-buttons {	
+	width: 20vw;
+	height: 20vw;
+	bottom: 5rem;
+	left: 5rem;
+	position: fixed;
+	
 }

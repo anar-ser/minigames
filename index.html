@@ -3,15 +3,44 @@
 <head>
     <title>New Game</title>
 	<link rel="stylesheet" href="style.css">
+	<link rel="icon" type="image/x-icon" href="assets/icon.png">
 </head>
 <body>
-	<img id="game-map" src="map.png">
-	<img id="player" src="ball.png">
-	<div id="info-shadow" class="hidden"></div>
+	<div id="game-field">
+		<img id="game-map" src="assets/map.png">
+		<img id="player" src="assets/ball.png">
+		<div id="info-shadow" class="hidden"></div>
+	</div>
 	<div id="info-window" class="hidden">
 		<h3 id="info-title"></h3>
         <p id="info-сontent"></p>
         <a id="redirect-button">Перейти</a>
+	</div>
+	<div id="movement-buttons" class="hidden">
+		<svg class="up" preserveAspectRatio="xMidYMid meet" viewBox="0 0 100 100">
+			<a onmousedown="buttonDown(87)" onmouseup="buttonUp(87)">
+				<polygon points="0,33, 0,120, 100,120, 100,33, 50,-20" fill="#14141ecc" />
+				<polygon points="50,100, 20,40, 80,40" fill="#404060" />
+			</a>
+		</svg>
+		<svg class="down" preserveAspectRatio="xMidYMid meet" viewBox="0 0 100 100">
+			<a onmousedown="buttonDown(83)" onmouseup="buttonUp(83)">
+				<polygon points="0,33, 0,120, 100,120, 100,33, 50,-20" fill="#14141ecc" />
+				<polygon points="50,100, 20,40, 80,40" fill="#404060" />
+			</a>
+		</svg>
+		<svg class="left" preserveAspectRatio="xMidYMid meet" viewBox="0 0 100 100">
+			<a onmousedown="buttonDown(65)" onmouseup="buttonUp(65)">
+				<polygon points="0,33, 0,120, 100,120, 100,33, 50,-20" fill="#14141ecc" />
+				<polygon points="50,100, 20,40, 80,40" fill="#404060" />
+			</a>
+		</svg>
+		<svg class="right" preserveAspectRatio="xMidYMid meet" viewBox="0 0 100 100">
+			<a onmousedown="buttonDown(68)" onmouseup="buttonUp(68)">
+				<polygon points="0,33, 0,120, 100,120, 100,33, 50,-20" fill="#14141ecc" />
+				<polygon points="50,100, 20,40, 80,40" fill="#404060" />
+			</a>
+		</svg>
 	</div>
 </body>
 <footer id="footer">
@@ -24,5 +53,5 @@ unfashionable end of the western spiral arm
  are so amazingly primitive that they still think
  digital watches are a pretty neat idea.
 </footer>
-<script src="scripts.js"></script>
+<script src="scripts/main.js"></script>
 </html>
