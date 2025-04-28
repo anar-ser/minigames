@@ -71,25 +71,25 @@ a {
 	width: 128rem;
 	height: 128rem;
 	border: solid var(--outerShadow);
-	border-width: 100vh 100vw;
+	border-width: calc(var(--vh, 1vh) * 100) calc(var(--vw, 1vw) * 100);
 	position: absolute;
 	background: radial-gradient(circle, rgba(0, 0, 0, 0) 0%, var(--innerShadow) 10%, var(--outerShadow) 70%, var(--outerShadow) 100%);
 }
 
 #info-window {
-	width: 80vw;
-	height: 30vh;
+	width: calc(var(--vw, 1vw) * 80);
+	height: calc(var(--vh, 1vh) * 30);
 	position: absolute;
-	border: 0.5vh solid #404060;
-	border-radius: 2vh;
+	border: calc(var(--vh, 1vh) * 0.5) solid #404060;
+	border-radius: calc(var(--vh, 1vh) * 2);
 	background-color: rgba(20, 20, 30, 0.8);
 }
 #info-window h3 {
-	font-size: 3vh;
+	font-size: calc(var(--vh, 1vh) * 3);
 }
 
 #info-window p {
-	font-size: 2vh;
+	font-size: calc(var(--vh, 1vh) * 2);
 }
 
 #info-title, #info-сontent, #redirect-button {
@@ -98,10 +98,10 @@ a {
 
 #redirect-button {
 	position: absolute;
-	bottom: 0.5vh;
-	right: 0.5vh;
-	padding: 0.8vh;
-	border: 0.3vh solid #AAAAAA;
-	border-radius: 1vh;
-	font-size: 2.1vh;
+	bottom: calc(var(--vh, 1vh) * 0.5);
+	right: calc(var(--vh, 1vh) * 0.5);
+	padding: calc(var(--vh, 1vh) * 0.8);
+	border: calc(var(--vh, 1vh) * 0.3) solid #AAAAAA;
+	border-radius: var(--vh, 1vh);
+	font-size: calc(var(--vh, 1vh) * 2.1);
 }
