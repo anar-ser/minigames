@@ -6,7 +6,6 @@ function buttonUp(e)   		   { pressedKeys[e] = false; }
 function buttonDown(e) 		   { pressedKeys[e] = true;  }
 window.onresize = setViewportProperty;
 
-const isMobile = navigator.userAgentData.mobile;
 const movementButtons = document.getElementById('movement-buttons');
 
 const gameField = document.getElementById('game-field');
@@ -21,11 +20,13 @@ let infoWindow = {
 	redirect:	document.getElementById('redirect-button')
 }
 
-let player = {
-	element: document.getElementById('player'),
-	mass: 10,
-	speed: { x: 0, y: 0 }
-}
+let player = new Player(
+	'Player',
+	document.getElementById('player'),
+	{ x: 2240, y: 2240 },
+	10,
+	0.45
+)
 
 const portals = [
     { 
@@ -74,12 +75,12 @@ portals.forEach(function(part, index) {
 	this[index].element = element;
 }, portals);
 
-let playerOffset = { left: 300, top: 300 };
-let cameraOffset = { left: playerOffset.left - window.innerWidth/2 + player.element.offsetWidth/2,
-					 top: playerOffset.top - window.innerHeight/2 + player.element.offsetHeight/2 };
+
+let cameraOffset = { left: player.x - window.innerWidth/2 + player.element.offsetWidth/2,
+					 top: player.y - window.innerHeight/2 + player.element.offsetHeight/2 };
 window.scroll(cameraOffset);
 
-if (isMobile) { movementButtons.classList.remove('hidden') }
+if (navigator.userAgentData.mobile) movementButtons.classList.remove('hidden');
 
 // Функция устанавливает динамическую высоту видимой области
 function setViewportProperty() {
@@ -123,19 +124,14 @@ function showInfo(show) {
 	}
 }
 
-function physic() {
-	
-	player.speed.x = Math.max( 0, player.speed.x );
-	player.speed.x = Math.min( 5, player.speed.x )
-}
 
 function cameraMove(x, y) {
 	infoShadow.style.left = x - (infoShadow.offsetWidth - player.element.offsetWidth)/2 + 'px';
 	infoShadow.style.top = y - (infoShadow.offsetHeight - player.element.offsetHeight)/2 + 'px';
 	
 	border = 4
-	x -= window.innerWidth/2 - player.element.offsetWidth;
-	y -= window.innerHeight/2 - player.element.offsetHeight;
+	x -= (window.innerWidth - player.element.offsetWidth)/2;
+	y -= (window.innerHeight - player.element.offsetHeight)/2;
 	speedX = (window.pageXOffset - x) / window.innerWidth * 32;
 	speedY = (window.pageYOffset - y) / window.innerHeight * 32;
 	if ( Math.abs(speedX) > border ) {
@@ -174,27 +170,11 @@ function checkPortalCollision(x, y) {
 // Main Game Loop
 var gameLoop = function(interval) {
 	
-	if (pressedKeys[65]) {
-		playerOffset.left -= 5;
-	}
-	if (pressedKeys[68]) {
-		playerOffset.left += 5;
-	}
-	if (pressedKeys[87]) {
-		playerOffset.top -= 5;
-	}
-	if (pressedKeys[83]) {
-		playerOffset.top += 5;
-	}
-	if (pressedKeys[13]) {
-		toggleState();
-	}
+	player.controls();
+	player.physicsCalculate();
 	
-	player.element.style.top = playerOffset.top + 'px';
-	player.element.style.left = playerOffset.left + 'px';
-	
-	checkPortalCollision(playerOffset.left, playerOffset.top);	
-	cameraMove(playerOffset.left, playerOffset.top);
+	checkPortalCollision(player.x, player.y);	
+	cameraMove(player.x, player.y);
 }
 
 // Set FPS
