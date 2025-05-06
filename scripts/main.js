@@ -9,7 +9,6 @@ window.onresize = setViewportProperty;
 const movementButtons = document.getElementById('movement-buttons');
 
 const gameField = document.getElementById('game-field');
-const background = 	document.getElementById('game-map');
 let footer = 		document.getElementById('footer');
 
 let infoShadow = 	document.getElementById('info-shadow');
@@ -20,61 +19,7 @@ let infoWindow = {
 	redirect:	document.getElementById('redirect-button')
 }
 
-let player = new Player(
-	'Player',
-	document.getElementById('player'),
-	{ x: 2240, y: 2240 },
-	10,
-	0.45
-)
-
-const portals = [
-    { 
-        x: 20,
-        y: 42,
-		hueDegree: 150,
-		title: 'Wikipedia',
-		content: '«Википедия» — это самая крупная и популярная в мире онлайн-энциклопедия. Её название происходит от двух слов: гавайского wiki («быстрый») и латинского encyclopedia («энциклопедия»).',
-        destination: 'https://www.wikipedia.org'
-    },
-    { 
-        x: 45,
-        y: 42,
-		hueDegree: 90,
-		title: 'GitHub',
-		content: 'GitHub — крупнейший веб-сервис для хостинга IT-проектов и их совместной разработки. Веб-сервис основан на системе контроля версий Git и разработан на Ruby on Rails и Erlang компанией GitHub, Inc.',
-        destination: 'https://www.github.com' 
-    },
-    { 
-        x: 75,
-        y: 32,
-		hueDegree: 330,
-		title: 'Stack Overflow',
-		content: 'Stack Overflow — система вопросов и ответов о программировании, разработанная Джоэлем Спольски и Джеффом Этвудом в 2008 году. Является частью Stack Exchange. Как и в других системах подобного рода, Stack Overflow предоставляет возможность оценивать вопросы и ответы, что поднимает или понижает репутацию зарегистрированных пользователей.',
-        destination: 'https://www.stackoverflow.com',
-    },
-    { 
-        x: 60,
-        y: 27,
-		hueDegree: 330,
-		title: 'Reddit',
-		content: 'Reddit — сайт, сочетающий черты социальной сети и форума, на котором зарегистрированные пользователи могут размещать ссылки на какую-либо понравившуюся информацию в интернете и обсуждать её.',
-        destination: 'https://www.reddit.com'
-    }
-];
-
-// Создание порталов
-portals.forEach(function(part, index) {
-	const element = document.createElement('img');
-	element.setAttribute('class', "portal");
-	element.setAttribute('src', "assets/portal.gif");
-	element.setAttribute('style', "left: " + this[index].x + "rem; top: " + this[index].y + "rem;" +
-	"filter: invert(11%) sepia(100%) saturate(551%) hue-rotate(" + this[index].hueDegree + "deg);");
-	
-	document.getElementById('game-field').insertBefore(element, player.element);
-	this[index].element = element;
-}, portals);
-
+let player = new Player();
 
 let cameraOffset = { left: player.x - window.innerWidth/2 + player.element.offsetWidth/2,
 					 top: player.y - window.innerHeight/2 + player.element.offsetHeight/2 };
@@ -132,8 +77,8 @@ function cameraMove(x, y) {
 	border = 4
 	x -= (window.innerWidth - player.element.offsetWidth)/2;
 	y -= (window.innerHeight - player.element.offsetHeight)/2;
-	speedX = (window.pageXOffset - x) / window.innerWidth * 32;
-	speedY = (window.pageYOffset - y) / window.innerHeight * 32;
+	speedX = (window.pageXOffset - x) / window.innerWidth * 64;
+	speedY = (window.pageYOffset - y) / window.innerHeight * 64;
 	if ( Math.abs(speedX) > border ) {
 		cameraOffset.left = window.pageXOffset - Math.sign(speedX) * (Math.abs(speedX)-border);
 	}
@@ -142,8 +87,8 @@ function cameraMove(x, y) {
 	}
 	window.scroll(cameraOffset);
 
-	footer.style.left = window.pageXOffset / (background.offsetWidth - window.innerWidth) *
-						(background.offsetWidth - footer.offsetWidth) + 'px';
+	footer.style.left = window.pageXOffset / (gameField.offsetWidth - window.innerWidth) *
+						(gameField.offsetWidth - footer.offsetWidth) + 'px';
 }
 
 function checkPortalCollision(x, y) {

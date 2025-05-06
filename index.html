@@ -7,8 +7,9 @@
 </head>
 <body>
 	<div id="game-field">
-		<img id="game-map" src="assets/map.png">
-		<img id="player" src="assets/ball.png">
+		<div id="blocks"></div>
+		<div id="portals"></div>
+		<div id="player"></div>
 		<div id="info-shadow" class="hidden"></div>
 	</div>
 	<div id="info-window" class="hidden">
@@ -53,7 +54,8 @@ unfashionable end of the western spiral arm
  are so amazingly primitive that they still think
  digital watches are a pretty neat idea.
 </footer>
-<script> let con = [] </script>
+<script src="scripts/map.js"></script>
+<script src="scripts/portals.js"></script>
 <script src="scripts/entity.js"></script>
 <script src="scripts/player.js"></script>
 <script src="scripts/main.js"></script>

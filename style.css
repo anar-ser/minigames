@@ -47,6 +47,22 @@ a {
 	display: none;
 }
 
+.block {
+	width: 10rem;
+	height: 10rem;
+	position: absolute;
+	left: 50rem;
+	top: 50rem;
+	background-color: black;
+	border: none;
+	margin: none;
+	padding: none;
+}
+.second {
+	left: 2220px;
+	top: 2400px;
+}
+
 .portal {
 	width: 10rem;
 	height: 10rem;
@@ -95,24 +111,47 @@ a > p {
 }
 
 #game-field {
-	position: relative;
-	margin: 0 auto;
-}
-
-#game-map {	
-	z-index: -9;
-	position:relative;
-}
-
-#game-field, #game-map {
 	width: 320rem;
 	height: 320rem;
+	background-image: url("assets/map.png");
+	background-size: cover;
+	position: relative;
+	margin: 0 auto;
+	z-index: -10;
 }
 
 #player {
 	width: 5rem;
 	height: 5rem;
 	position: absolute;
+	background-image: url("assets/ball.png");
+	background-size: cover;
+}
+
+#player > #player-up, #player > #player-down, #player > #player-left, #player > #player-right {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+#player > #player-up {
+	left: 0;
+	top: -50%;
+}
+
+#player > #player-down {
+	left: 0;
+	top: 50%;
+}
+
+#player > #player-left {
+	left: -50%;
+	top: 0;
+}
+
+#player > #player-right {
+	left: 50%;
+	top: 0;
 }
 
 #info-shadow {
@@ -142,10 +181,6 @@ a > p {
 	font-size: calc(var(--vh, 1vh) * 2);
 }
 
-#info-title, #info-сontent, #redirect-button {
-	color: #AAAAAA
-}
-
 #redirect-button {
 	position: absolute;
 	bottom: calc(var(--vh, 1vh) * 0.5);
@@ -154,6 +189,10 @@ a > p {
 	border: calc(var(--vh, 1vh) * 0.3) solid #AAAAAA;
 	border-radius: var(--vh, 1vh);
 	font-size: calc(var(--vh, 1vh) * 2.1);
+}
+
+#info-title, #info-сontent, #redirect-button {
+	color: #AAAAAA
 }
 
 #movement-buttons {	
