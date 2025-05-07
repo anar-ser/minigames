@@ -44,11 +44,13 @@ function toggleState() {
 
 function getOffset(el) {
   const rect = el.getBoundingClientRect();
+  const border = parseFloat(getComputedStyle(el,null).getPropertyValue('border-width'));
+  
   return {
-    left: rect.left + window.scrollX - gameField.offsetLeft,
-    top: rect.top + window.scrollY - gameField.offsetTop,
-	right: rect.right + window.scrollX - gameField.offsetLeft,
-    bottom: rect.bottom + window.scrollY - gameField.offsetTop
+    left: rect.left + window.scrollX - gameField.offsetLeft + border,
+    top: rect.top + window.scrollY - gameField.offsetTop + border,
+	right: rect.right + window.scrollX - gameField.offsetLeft - border,
+    bottom: rect.bottom + window.scrollY - gameField.offsetTop - border
   };
 }
 
@@ -74,11 +76,12 @@ function cameraMove(x, y) {
 	infoShadow.style.left = x - (infoShadow.offsetWidth - player.element.offsetWidth)/2 + 'px';
 	infoShadow.style.top = y - (infoShadow.offsetHeight - player.element.offsetHeight)/2 + 'px';
 	
-	border = 4
+	border = 10
+	force = 6
 	x -= (window.innerWidth - player.element.offsetWidth)/2;
 	y -= (window.innerHeight - player.element.offsetHeight)/2;
-	speedX = (window.pageXOffset - x) / window.innerWidth * 64;
-	speedY = (window.pageYOffset - y) / window.innerHeight * 64;
+	speedX = (window.pageXOffset - x) / window.innerWidth * 16 * force;
+	speedY = (window.pageYOffset - y) / window.innerHeight * 16 * force;
 	if ( Math.abs(speedX) > border ) {
 		cameraOffset.left = window.pageXOffset - Math.sign(speedX) * (Math.abs(speedX)-border);
 	}

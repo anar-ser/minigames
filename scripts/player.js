@@ -3,7 +3,7 @@ class Player extends Entity {
 		super(
 			'Player',
 			document.getElementById('player'),
-			{ x: 2205, y: 2150 },
+			{ x: 157.5, y: 155 },
 			10,
 			0.45,
 			{

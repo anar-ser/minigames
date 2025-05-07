@@ -1,22 +1,22 @@
 gravity = 1.2;
 forceLimit = 10;
 
+fontSize = parseFloat(window.getComputedStyle(document.getElementsByTagName('html')[0]).fontSize);
+
 blocks = document.getElementsByClassName('block');
 
 class Entity {
 	constructor(name, element, position, mass, airResistance) {
 		this.name = name;
 		this.element = element;
-		this.x = position.x;
-		this.y = position.y;
+		this.x = position.x * fontSize;
+		this.y = position.y * fontSize;
 		this.mass = mass;
 		this.airResistance = airResistance;
 		
 		const rect = this.element.getBoundingClientRect();
 		this.width = rect.width;
 		this.height = rect.height;
-		this.element.style.left = this.x;
-		this.element.style.top  = this.y;
 		
 		this.force = { x: 0, y: 0 };
 		this.speed = { x: 0, y: 0 };
@@ -29,18 +29,20 @@ class Entity {
 	}
 	
 	physicsCalculate() {
-		this.speed.x += this.force.x;
-		this.speed.y += this.force.y;
+		this.speed.x += this.force.x / this.mass * 10;
+		this.speed.y += this.force.y / this.mass * 10;
 		this.speed.y += gravity;
 		
 		const airForce = {
-			x: Math.pow(this.speed.x, 2)/2 * (1 - this.airResistance) / 100 + 0.01,
-			y: Math.pow(this.speed.y, 2)/2 * (1 - this.airResistance) / 100 + 0.01
+			x: Math.pow(this.speed.x, 2)/2 * this.airResistance /this.mass / 10 + 0.01,
+			y: Math.pow(this.speed.y, 2)/2 * this.airResistance / this.mass / 10 + 0.01
 		}
-		const friction = (this.onGround && this.force.x == 0)? Math.pow(this.speed.x, 2)/ 25: 0 + 0.5;
+		const friction = (this.onGround && this.force.x == 0)? Math.pow(this.speed.x, 2) / this.mass / 2.5 + 0.5 : 0 ;
 
 		this.speed.x = (Math.abs(this.speed.x) - airForce.x - friction) * Math.sign(this.speed.x);
 		this.speed.y = (Math.abs(this.speed.y) - airForce.y) * Math.sign(this.speed.y);
+		if (0.1 > this.speed.x && this.speed.x > -0.1) this.speed.x = 0;
+		if (0.1 > this.speed.y && this.speed.y > -0.1) this.speed.y = 0;
 		
 		this.checkCollision();
 		this.x += this.speed.x;

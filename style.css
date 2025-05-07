@@ -13,7 +13,9 @@
 html {
 	font-size: 14px;
 	overflow: hidden;
-	background-color: #895339;
+	background-image: url('assets/decorations/cave_background.png');
+	background-size: 320rem 160rem;
+	image-rendering: pixelated;
 }
 
 body {
@@ -28,7 +30,8 @@ footer {
 	height: 100px;
 	z-index: -10;
 	position: relative;
-	background-color: #895339;
+	background-image: url('assets/blocks/block_tile.png');
+	background-size: 10rem 10rem;
 }
 
 img {
@@ -48,19 +51,15 @@ a {
 }
 
 .block {
-	width: 10rem;
-	height: 10rem;
 	position: absolute;
-	left: 50rem;
-	top: 50rem;
-	background-color: black;
-	border: none;
-	margin: none;
-	padding: none;
+	background-color: #895339;
+	background-size: 10rem 10rem;
+	background-clip: content-box;
+	border: 0.625rem solid transparent;
 }
-.second {
-	left: 2220px;
-	top: 2400px;
+
+.decoration {
+	position: absolute;
 }
 
 .portal {
@@ -113,8 +112,7 @@ a > p {
 #game-field {
 	width: 320rem;
 	height: 320rem;
-	background-image: url("assets/map.png");
-	background-size: cover;
+	background-color: #5fcde4;
 	position: relative;
 	margin: 0 auto;
 	z-index: -10;
