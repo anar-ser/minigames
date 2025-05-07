@@ -1,28 +1,63 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Мини-игры</title>
-		<script src="scripts.js"></script>
-		<link rel="stylesheet" href="style.css">
-		<link rel="icon" type="image/x-icon" href="icon.png">
-	</head>
-	<body style="backgroundcolor:#161b22;">
-		<div class="main-window">
-			<div class="head">
-				<p class="head-text">Мини-игры</p>
-			</div>
-			<a href="3d-adventure">
-				<div class="icon-box"><img class="icon" src="3D Adventure/icon.png" alt="icon.png" onerror="this.onerror=null;this.src=this.alt;"/></div>
-				<p class="name">3D Adventure</p>
+<head>
+    <title>New Game</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="icon" type="image/x-icon" href="assets/icon.png">
+</head>
+<body>
+	<div id="game-field">
+		<div id="decorations"></div>
+		<div id="blocks"></div>		
+		<div id="portals"></div>
+		<div id="player"></div>
+		<div id="info-shadow" class="hidden"></div>
+	</div>
+	<div id="info-window" class="hidden">
+		<h3 id="info-title"></h3>
+        <p id="info-сontent"></p>
+        <a id="redirect-button">Перейти</a>
+	</div>
+	<div id="movement-buttons" class="hidden">
+		<svg class="up" preserveAspectRatio="xMidYMid meet" viewBox="0 0 100 100">
+			<a onmousedown="buttonDown(87)" onmouseup="buttonUp(87)">
+				<polygon points="0,33, 0,120, 100,120, 100,33, 50,-20" fill="#14141ecc" />
+				<polygon points="50,100, 20,40, 80,40" fill="#404060" />
 			</a>
-			<a href="2d-physics-sandbox">
-				<div class="icon-box"><img class="icon" src="2D Physics Sandbox/icon.png" alt="icon.png" onerror="this.onerror=null;this.src=this.alt;"/></div>
-				<p class="name">2D Physics Sandbox</p>
+		</svg>
+		<svg class="down" preserveAspectRatio="xMidYMid meet" viewBox="0 0 100 100">
+			<a onmousedown="buttonDown(83)" onmouseup="buttonUp(83)">
+				<polygon points="0,33, 0,120, 100,120, 100,33, 50,-20" fill="#14141ecc" />
+				<polygon points="50,100, 20,40, 80,40" fill="#404060" />
 			</a>
-			<a href="2d-platformer-game">
-				<div class="icon-box"><img class="icon" src="2D Platformer Game/icon.png" alt="icon.png" onerror="this.onerror=null;this.src=this.alt;"/></div>
-				<p class="name">2D Platformer Game</p>
+		</svg>
+		<svg class="left" preserveAspectRatio="xMidYMid meet" viewBox="0 0 100 100">
+			<a onmousedown="buttonDown(65)" onmouseup="buttonUp(65)">
+				<polygon points="0,33, 0,120, 100,120, 100,33, 50,-20" fill="#14141ecc" />
+				<polygon points="50,100, 20,40, 80,40" fill="#404060" />
 			</a>
-		</div>
-	</body>
+		</svg>
+		<svg class="right" preserveAspectRatio="xMidYMid meet" viewBox="0 0 100 100">
+			<a onmousedown="buttonDown(68)" onmouseup="buttonUp(68)">
+				<polygon points="0,33, 0,120, 100,120, 100,33, 50,-20" fill="#14141ecc" />
+				<polygon points="50,100, 20,40, 80,40" fill="#404060" />
+			</a>
+		</svg>
+	</div>
+</body>
+<footer id="footer">
+Far out in the uncharted backwaters of the 
+unfashionable end of the western spiral arm
+ of the Galaxy lies a small unregarded yellow sun.
+ Orbiting this at a distance of roughly ninety-two
+ million miles is an utterly insignificant little
+ blue green planet whose ape-descended life forms
+ are so amazingly primitive that they still think
+ digital watches are a pretty neat idea.
+</footer>
+<script src="scripts/map.js"></script>
+<script src="scripts/portals.js"></script>
+<script src="scripts/entity.js"></script>
+<script src="scripts/player.js"></script>
+<script src="scripts/main.js"></script>
 </html>
