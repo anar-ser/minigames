@@ -3,33 +3,33 @@ const portals = [
         x: 100,
         y: 128,
 		hueDegree: 150,
-		title: 'Wikipedia',
+		title: '2D Physics Sandbox',
 		content: '«Википедия» — это самая крупная и популярная в мире онлайн-энциклопедия. Её название происходит от двух слов: гавайского wiki («быстрый») и латинского encyclopedia («энциклопедия»).',
-        destination: 'https://www.wikipedia.org'
+        destination: '/2d-physics-sandbox/'
     },
     { 
         x: 128,
         y: 148,
 		hueDegree: 90,
-		title: 'GitHub',
+		title: '2D Platformer Game',
 		content: 'GitHub — крупнейший веб-сервис для хостинга IT-проектов и их совместной разработки. Веб-сервис основан на системе контроля версий Git и разработан на Ruby on Rails и Erlang компанией GitHub, Inc.',
-        destination: 'https://www.github.com' 
+        destination: '/2d-platformer-game/' 
     },
     { 
         x: 182,
         y: 148,
 		hueDegree: 330,
-		title: 'Stack Overflow',
+		title: '3D Adventure',
 		content: 'Stack Overflow — система вопросов и ответов о программировании, разработанная Джоэлем Спольски и Джеффом Этвудом в 2008 году. Является частью Stack Exchange. Как и в других системах подобного рода, Stack Overflow предоставляет возможность оценивать вопросы и ответы, что поднимает или понижает репутацию зарегистрированных пользователей.',
-        destination: 'https://www.stackoverflow.com',
+        destination: '/3d-adventure/',
     },
     { 
         x: 232,
         y: 148,
 		hueDegree: 330,
-		title: 'Reddit',
+		title: 'Voxel Adventure',
 		content: 'Reddit — сайт, сочетающий черты социальной сети и форума, на котором зарегистрированные пользователи могут размещать ссылки на какую-либо понравившуюся информацию в интернете и обсуждать её.',
-        destination: 'https://www.reddit.com'
+        destination: '/voxel-adventure/'
     }
 ];
 
