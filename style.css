@@ -1,13 +1,32 @@
 @property --innerShadow {
-  syntax: '<color>';
-  initial-value: rgba(0, 0, 0, 0.5);
-  inherits: false;
+	syntax: '<color>';
+	initial-value: rgba(0, 0, 0, 0.5);
+	inherits: false;
 }
 
 @property --outerShadow {
-  syntax: '<color>';
-  initial-value: #000;
-  inherits: false;
+	syntax: '<color>';
+	initial-value: #000;
+	inherits: false;
+}
+
+::-webkit-scrollbar {
+	width: 1rem;
+	height: 1rem;
+}
+
+::-webkit-scrollbar-track {
+	border: 0.3rem solid #404060;
+	border-radius: 1rem;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #404060;  
+	border-radius: 1rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #454565;  
 }
 
 html {
@@ -42,11 +61,25 @@ a {
 	text-decoration:none;
 }
 
-.active {
-	display: block;
+button {
+	border: calc(var(--vh, 1vh) * 0.5) solid #404060;
+	border-radius: calc(var(--vh, 1vh) * 1);
+	background-color: #1116;
+	color: #AAAAAA
+}
+button:hover {
+	border-color: #505070;
+}
+button:focus {
+	outline: none;
+	box-shadow: none;
 }
 
 .hidden {
+	display: none;
+}
+
+.hidden_menu {
 	display: none;
 }
 
@@ -170,6 +203,7 @@ a > p {
 	border: calc(var(--vh, 1vh) * 0.5) solid #404060;
 	border-radius: calc(var(--vh, 1vh) * 2);
 	background-color: rgba(20, 20, 30, 0.8);
+	color: #AAAAAA
 }
 #info-window h3 {
 	font-size: calc(var(--vh, 1vh) * 3);
@@ -187,10 +221,86 @@ a > p {
 	border: calc(var(--vh, 1vh) * 0.3) solid #AAAAAA;
 	border-radius: var(--vh, 1vh);
 	font-size: calc(var(--vh, 1vh) * 2.1);
+	color: #AAAAAA
 }
 
-#info-title, #info-сontent, #redirect-button {
+#menu-button {
+	width: calc(var(--vh, 1vh) * 6);
+	height: calc(var(--vh, 1vh) * 6);
+	left: calc(var(--vw, 1vw) * 2);
+	top: calc(var(--vh, 1vh) * 2);
+	position: fixed;
+	background-color: rgba(20, 20, 30, 0.8);
+	font-size: calc(var(--vh, 1vh) * 5);
+	line-height: 1;
+}
+
+#menu {
+	width: calc(var(--vw, 1vw) * 50);
+	height: calc(var(--vh, 1vh) * 60);
+	left: calc(var(--vw, 1vw) * 25);
+	top: calc(var(--vh, 1vh) * 10);
+	position: fixed;
+	border: calc(var(--vh, 1vh) * 0.5) solid #404060;
+	border-radius: calc(var(--vh, 1vh) * 2);
+	background-color: rgba(20, 20, 30, 0.8);
 	color: #AAAAAA
+}
+
+#menu > .scroll-box {
+	width: auto;
+	height: 78%;
+	margin: calc(var(--vh, 1vh) * 1);
+	margin-top: calc(var(--vh, 1vh) * 8);
+	padding: 1rem;
+	overflow: auto;
+}
+
+#menu > .scroll-box > .grid-box {
+	display: flex;
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	grid-gap: 1rem;
+}
+
+#menu > .scroll-box > .grid-box > p {
+	font-size: calc(var(--vh, 1vh) * 2);
+	margin: auto;
+	margin-left: 0;
+}
+
+#menu > .scroll-box > .grid-box > button {
+	height: calc(var(--vh, 1vh) * 4);
+	font-size: calc(var(--vh, 1vh) * 2);
+	
+}
+
+#controls-info {
+	height: calc(var(--vh, 1vh) * 7);
+	line-height: calc(var(--vh, 1vh) * 7);
+	width: 70%;
+	position: absolute;
+	border: calc(var(--vh, 1vh) * 0.5) solid #404060;
+	border-radius: calc(var(--vh, 1vh) * 1);
+	background-color: #0008;
+	font-size: calc(var(--vh, 1vh) * 3);
+	padding: auto;
+	inset: 0;
+	margin: auto;
+}
+
+#close-menu {
+	width: calc(var(--vh, 1vh) * 6);
+	height: calc(var(--vh, 1vh) * 6);
+	right: calc(var(--vh, 1vh) * 1);
+	top: calc(var(--vh, 1vh) * 1);
+	position: absolute;
+	font-size: calc(var(--vh, 1vh) * 5);
+	line-height: 0;
+	color: #AAAAAA;
+}
+#close-menu:focus-visible {
+	outline: none;
 }
 
 #movement-buttons {	

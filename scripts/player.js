@@ -16,10 +16,12 @@ class Player extends Entity {
 	}
 	
 	controls() {
-		if (pressedKeys[65]) this.addForce({ x: -1, y: 0 });
-		if (pressedKeys[68]) this.addForce({ x: 1, y: 0 });
-		if ((pressedKeys[32] || pressedKeys[87]) && this.onGround){this.addForce({ x: 0, y: -70 });
-			this.onGround = false;}
-		if (pressedKeys[83]) this.addForce({ x: 0, y: 1 });
+		if (pressedKeys[controls.left.code]) this.addForce({ x: -1, y: 0 });
+		if (pressedKeys[controls.right.code]) this.addForce({ x: 1, y: 0 });
+		if ((pressedKeys[controls.up.code]) && this.onGround){
+			this.addForce({ x: 0, y: -70 });
+			this.onGround = false;
+		}
+		if (pressedKeys[controls.down.code]) this.addForce({ x: 0, y: 1 });
 	}
 }

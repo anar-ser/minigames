@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Minigames</title>
+    <title>New Game</title>
 	<link rel="stylesheet" href="style.css">
 	<link rel="icon" type="image/x-icon" href="assets/icon.png">
 </head>
 <body>
 	<div id="game-field">
+		<div id="player"></div>
 		<div id="decorations"></div>
 		<div id="blocks"></div>		
-		<div id="portals"></div>
-		<div id="player"></div>
+		<div id="portals"></div>		
 		<div id="info-shadow" class="hidden"></div>
+	</div>
+	<button id="menu-button" onclick="showMenu(true)">⚙</button>
+	<div id="menu" class="hidden">
+		<button id="close-menu" onclick="showMenu(false)">⨯</button>
+		<div class="scroll-box">
+			<div class="grid-box">
+				<p>Left:</p><button id="controls-left" onclick="changeControl('left')"></button>
+				<p>Right:</p><button id="controls-right" onclick="changeControl('right')"></button>
+				<p>Up:</p><button id="controls-up" onclick="changeControl('up')"></button>
+				<p>Down:</p><button id="controls-down" onclick="changeControl('down')"></button>
+			</div>
+			<p id="controls-info" class="hidden">Waiting for input...</p>
+		</div>
 	</div>
 	<div id="info-window" class="hidden">
 		<h3 id="info-title"></h3>

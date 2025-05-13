@@ -9,14 +9,57 @@ window.onresize = setViewportProperty;
 const movementButtons = document.getElementById('movement-buttons');
 
 const gameField = document.getElementById('game-field');
-let footer = 		document.getElementById('footer');
+let footer = 	  document.getElementById('footer');
 
-let infoShadow = 	document.getElementById('info-shadow');
+let menu = {
+	element: document.getElementById('menu'),
+	controls: {
+		left: document.getElementById('controls-left'),
+		right: document.getElementById('controls-right'),
+		up: document.getElementById('controls-up'),
+		down: document.getElementById('controls-down')
+	}
+}
+
+let infoShadow =  document.getElementById('info-shadow');
 let infoWindow = { 
 	element: 	document.getElementById('info-window'),
 	title: 		document.getElementById('info-title'),
 	content: 	document.getElementById('info-сontent'),
 	redirect:	document.getElementById('redirect-button')
+}
+
+
+if (!localStorage.left) {
+	localStorage.left = JSON.stringify({
+		key: 'keyA',
+		code: 65
+	})
+}
+if (!localStorage.right) {
+	localStorage.right = JSON.stringify({
+		key: 'keyD',
+		code: 68
+	})
+}
+if (!localStorage.up) {
+	localStorage.up = JSON.stringify({
+		key: 'keyW',
+		code: 87
+	})
+}
+if (!localStorage.down) {
+	localStorage.down = JSON.stringify({
+		key: 'keyS',
+		code: 83
+	})
+}
+
+let controls = {
+	left: JSON.parse(localStorage.left),
+	right: JSON.parse(localStorage.right),
+	up: JSON.parse(localStorage.up),
+	down: JSON.parse(localStorage.down)
 }
 
 let player = new Player();
@@ -54,18 +97,54 @@ function getOffset(el) {
   };
 }
 
+function showMenu(show) {
+	if (show){
+		infoShadow.classList.add('hidden_menu');
+		infoWindow.element.classList.add('hidden_menu');
+		menu.element.classList.remove('hidden');
+		document.getElementById('menu-button').classList.add('hidden_menu');
+		
+		menu.controls.left.innerHTML = controls.left.key;
+		menu.controls.right.innerHTML = controls.right.key;
+		menu.controls.up.innerHTML = controls.up.key;
+		menu.controls.down.innerHTML = controls.down.key;
+	} else {
+		infoShadow.classList.remove('hidden_menu');
+		infoWindow.element.classList.remove('hidden_menu');
+		menu.element.classList.add('hidden');
+		document.getElementById('menu-button').classList.remove('hidden_menu');
+	}
+}
+
+async function changeControl(key) {
+	document.getElementById('controls-info').classList.remove('hidden');
+	controls[key] = await waitingKeypress();
+	localStorage[key] = JSON.stringify(controls[key]);
+	menu.controls[key].innerHTML = controls[key].key;
+	menu.controls[key].blur();
+	document.getElementById('controls-info').classList.add('hidden');
+}
+
+function waitingKeypress() {
+	return new Promise((resolve) => {
+		document.addEventListener('keydown', onKeyHandler);
+		function onKeyHandler(e) {
+			resolve({
+				key: e.code,
+				code: e.keyCode
+			});
+		}
+	});
+}
+
 let infoState = false;
 function showInfo(show) {
 	if (show) {
-		infoShadow.classList.add('active');
 		infoShadow.classList.remove('hidden');
-		infoWindow.element.classList.add('active');
 		infoWindow.element.classList.remove('hidden');
 		infoState = true;
 	} else {
-		infoShadow.classList.remove('active');
 		infoShadow.classList.add('hidden');
-		infoWindow.element.classList.remove('active');
 		infoWindow.element.classList.add('hidden');
 		infoState = false;
 	}
