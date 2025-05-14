@@ -1,0 +1,69 @@
+body {
+	margin: 0;
+	background-color: #555
+}
+
+flex {
+    display: flex;
+	overflow: hidden;
+	flex: 1 1 auto;
+}
+
+flex.horizontal {
+	flex-direction: row;
+}
+
+flex.vertical {
+	flex-direction: column;
+}
+
+flex-item {
+	position: relative;
+	min-height: 4rem;
+	min-width: 4rem;
+	border: 4px #777 solid;
+}
+
+flex-item.header {
+	flex: 0 0 3rem;
+	margin-bottom: 2px;
+}
+
+flex > flex-resizer {
+	margin: -4px;
+	flex: 0 0 10px;
+	z-index: 100;
+}
+
+flex.horizontal > flex-resizer {
+	cursor: ew-resize;
+}
+
+flex.vertical > flex-resizer {
+	cursor: ns-resize;
+}
+
+.window {
+	border-top: 1.4rem #777 solid;
+}
+
+div.tab-nav {
+	position: absolute;
+	top: -1.2rem;
+	height: 1rem;
+	margin: 0;
+}
+
+.tab-content {
+	display: none;
+}
+
+.tab-content:target {
+	display: block;
+}
+
+#content-1:target~.tab-nav>[href="#content-1"],
+#content-2:target~.tab-nav>[href="#content-2"],
+#content-3:target~.tab-nav>[href="#content-3"] {
+  color: red;
+}

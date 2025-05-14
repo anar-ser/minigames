@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Space</title>
+    <link rel="stylesheet" href="style.css">
+	<script src="flex.js" defer></script>
+</head>
+<body>
+	<flex class="vertical" style="height: 100vh;">
+		<flex-item class="header"></flex-item>
+		<flex class="horizontal" style="height: auto;">
+			<flex class="vertical" style="flex: 1;">
+				<flex-item class="window" style="flex: 1;">
+					<div class="tab-content" id="content-1">
+						Содержимое 1...
+					</div>
+					<div class="tab-content" id="content-2">
+						Содержимое 2...
+					</div>
+					<div class="tab-content" id="content-3">
+						Содержимое 3...
+					</div>
+					<div class="tab-nav">
+						<a class="tab-link" href="#content-1">Вкладка 1</a>
+						<a class="tab-link" href="#content-2">Вкладка 2</a>
+						<a class="tab-link" href="#content-3">Вкладка 3</a>
+					</div>
+				</flex-item>
+				<flex-resizer></flex-resizer>
+				<flex-item class="window" style="flex: 1;">
+					<div class="tab-nav"></div>
+				</flex-item>
+			</flex>
+			<flex-resizer></flex-resizer>
+			<flex class="vertical" style="flex: 2;">
+				<flex-item class="window" style="flex: 1;">
+					<div class="tab-nav"></div>
+				</flex-item>
+			</flex>
+			<flex-resizer></flex-resizer>
+			<flex class="vertical" style="flex: 1;">
+				<flex-item class="window" style="flex: 1;">
+					<div class="tab-nav"></div>
+				</flex-item>
+				<flex-resizer></flex-resizer>
+				<flex-item class="window" style="flex: 1;">
+					<div class="tab-nav"></div>
+				</flex-item>
+			</flex>
+		</flex>
+	</flex>
+</body>
+</html>
