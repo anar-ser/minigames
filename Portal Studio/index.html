@@ -3,53 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Space</title>
+    <title>Portal Studio</title>
     <link rel="stylesheet" href="style.css">
-	<script src="flex.js" defer></script>
+	<script src="scripts/flex.js" defer></script>
 </head>
 <body>
-	<flex class="vertical" style="height: 100vh;">
-		<flex-item class="header"></flex-item>
+	<flex class="vertical main" style="height: 100vh;">
+		<flex-item class="header">
+			<div class="dropdown">
+				<button class="tab-link main-tab">File</button>
+				<div class="dropdown-options">
+					<a>Save</a>
+					<a>Open</a>
+					<div class="dropdown right-drop">
+						<button>Open recent...</button>
+						<div id="recent-files" class="dropdown-options">
+						</div>
+					</div>
+					<a>Delete</a>
+				</div>
+			</div>
+		</flex-item>
 		<flex class="horizontal" style="height: auto;">
 			<flex class="vertical" style="flex: 1;">
-				<flex-item class="window" style="flex: 1;">
-					<div class="tab-content" id="content-1">
-						Содержимое 1...
-					</div>
-					<div class="tab-content" id="content-2">
-						Содержимое 2...
-					</div>
-					<div class="tab-content" id="content-3">
-						Содержимое 3...
-					</div>
+			
+				<!-- Left Top Window -->
+				<flex-item class="window tab" style="flex: 1;">
 					<div class="tab-nav">
-						<a class="tab-link" href="#content-1">Вкладка 1</a>
-						<a class="tab-link" href="#content-2">Вкладка 2</a>
-						<a class="tab-link" href="#content-3">Вкладка 3</a>
+						<a class="tab-link tab-link-active" data-target-id="0">Вкладка 1</a>
+						<a class="tab-link" data-target-id="1">Вкладка 2</a>
+						<a class="tab-link" data-target-id="2">Вкладка 3</a>
+					</div>
+					<div class="tab-content">
+						<div class="tab-pane tab-pane-show" data-id="0">Содержимое 1...</div>
+						<div class="tab-pane" data-id="1">Содержимое 2...</div>
+						<div class="tab-pane" data-id="2">Содержимое 3...</div>
 					</div>
 				</flex-item>
+				
 				<flex-resizer></flex-resizer>
-				<flex-item class="window" style="flex: 1;">
-					<div class="tab-nav"></div>
+				
+				<!-- Left Bottom Window -->
+				<flex-item class="window tab" style="flex: 1;">
+					<div class="tab-nav">
+						<a class="tab-link tab-link-active" data-target-id="0">Assets</a>
+						<a class="tab-link" data-target-id="1">Scripts</a>
+						<a class="tab-link" data-target-id="2">Вкладка 3</a>
+					</div>
+					<div class="tab-content">
+						<div id="assets" class="tab-pane tab-pane-show" data-id="0">
+							<div class="bar">
+								<a class="action" onclick="addDirectoryAssets()">🗀</a>
+								<a class="action" onclick="addFileAssets()">🞡</a>
+							</div>
+							<div class="content">
+								<button class="content directory">Directory</button>
+								<div class="content">
+									<button class="content directory">Directory</button>
+									<button class="content active">File</button>
+									<button class="content active">File</button>
+								</div>
+							</div>
+							<div class="content">
+								<button class="content directory">Directory</button>
+								<button class="content active">File</button>
+							</div>
+							<script src="scripts/assets.js"></script>
+						</div>
+						<div id="scripts" class="tab-pane" data-id="1">
+							<div class="bar">
+								<a class="action">🗀</a>
+								<a class="action">🞡</a>
+							</div>
+							<div class="content">
+								<button class="content directory">Directory</button>
+								<div class="content">
+									<button class="content directory">Directory</button>
+									<button class="content active">File</button>
+									<button class="content active">File</button>
+								</div>
+							</div>
+							<div class="content">
+								<button class="content">Directory</button>
+								<button class="content active">File</button>
+							</div>
+						</div>
+						<div class="tab-pane" data-id="2">Содержимое 3...</div>
+					</div>
 				</flex-item>
+				
 			</flex>
 			<flex-resizer></flex-resizer>
 			<flex class="vertical" style="flex: 2;">
+			
+				<!-- Central Window -->
 				<flex-item class="window" style="flex: 1;">
 					<div class="tab-nav"></div>
 				</flex-item>
+				
 			</flex>
 			<flex-resizer></flex-resizer>
 			<flex class="vertical" style="flex: 1;">
-				<flex-item class="window" style="flex: 1;">
-					<div class="tab-nav"></div>
+			
+				<!-- Right Top Window -->
+				<flex-item class="window tab" style="flex: 1;">
+					<div class="tab-nav">
+						<a class="tab-link tab-link-active" data-target-id="0">Вкладка 1</a>
+						<a class="tab-link" data-target-id="1">Вкладка 2</a>
+						<a class="tab-link" data-target-id="2">Вкладка 3</a>
+					</div>
+					<div class="tab-content">
+						<div class="tab-pane tab-pane-show" data-id="0">Содержимое 1...</div>
+						<div class="tab-pane" data-id="1">Содержимое 2...</div>
+						<div class="tab-pane" data-id="2">Содержимое 3...</div>
+					</div>
 				</flex-item>
+				
 				<flex-resizer></flex-resizer>
-				<flex-item class="window" style="flex: 1;">
-					<div class="tab-nav"></div>
+				
+				<!-- Right Bottom Window -->
+				<flex-item class="window tab" style="flex: 1;">
+					<div class="tab-nav">
+						<a class="tab-link tab-link-active" data-target-id="0">Вкладка 1</a>
+						<a class="tab-link" data-target-id="1">Вкладка 2</a>
+						<a class="tab-link" data-target-id="2">Вкладка 3</a>
+					</div>
+					<div class="tab-content">
+						<div class="tab-pane tab-pane-show" data-id="0">Содержимое 1...</div>
+						<div class="tab-pane" data-id="1">Содержимое 2...</div>
+						<div class="tab-pane" data-id="2">Содержимое 3...</div>
+					</div>
 				</flex-item>
+				
 			</flex>
 		</flex>
 	</flex>
+	
+	<script src="scripts/tabs.js"></script>
 </body>
 </html>
